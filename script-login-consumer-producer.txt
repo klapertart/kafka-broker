@@ -1,0 +1,27 @@
+kafka-console-consumer --bootstrap-server localhost:9092 \
+        --topic onboarding-stream-output-topic \
+        --from-beginning \
+        --formatter kafka.tools.DefaultMessageFormatter \
+        --property print.key=true \
+        --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+        --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+
+kafka-console-consumer --bootstrap-server localhost:9092 \
+        --topic onboarding-stream-output-topic \
+        --from-beginning \
+        --formatter kafka.tools.DefaultMessageFormatter \
+        --property print.key=true \
+        --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+        --property value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+
+
+kafka-console-consumer --bootstrap-server localhost:9092 \
+        --topic agregated-sale-topic \
+        --from-beginning \
+        --formatter kafka.tools.DefaultMessageFormatter \
+        --property print.key=true \
+
+
+kafka-console-producer --bootstrap-server localhost:9092 --topic onboarding-stream-input-topic 
+
+kafka-console-producer --bootstrap-server localhost:9092 --topic sale-topic --property "parse.key=true" --property "key.separator=:"
